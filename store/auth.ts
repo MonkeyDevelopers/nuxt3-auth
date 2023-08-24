@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { Status } from "~/interfaces/toastStatus.enum";
-import { toastMessage, getConfig } from "~/composables";
+import { toastMessage } from "~/composables";
 import { UserPayloadInterface } from "~/interfaces";
 
 export const useAuthStore = defineStore("auth", {
@@ -10,6 +10,8 @@ export const useAuthStore = defineStore("auth", {
   }),
   actions: {
     async authenticateUser({ username, password }: UserPayloadInterface) {
+      const config = useRuntimeConfig();
+
       const { data, pending }: any = await useFetch(
         `${getConfig("baseURL")}/api/login`,
         {

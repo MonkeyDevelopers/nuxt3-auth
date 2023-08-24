@@ -1,4 +1,4 @@
 export function getConfig(item: string) {
   const config = useRuntimeConfig();
-  return config[item];
+  return config.public[item];
 }
