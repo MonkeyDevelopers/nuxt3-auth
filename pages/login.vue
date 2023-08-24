@@ -31,14 +31,15 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
 import { useAuthStore } from '~/store/auth';
+import { Status } from '~/interfaces/toastStatus.enum';
 
 const { authenticateUser } = useAuthStore(); // use auth store
 
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
 
 const user = ref({
-  username: 'kminchelle',
-  password: '0lelplR',
+  username: '',
+  password: '',
 });
 const router = useRouter();
 
@@ -47,7 +48,9 @@ const login = async () => {
   // redirect to homepage if user is authenticated
   if (authenticated) {
     router.push('/');
+    return;
   }
+  toastMessage('Ops vtnc', Status.ERROR, 4000);
 };
 </script>
 <style lang="scss">

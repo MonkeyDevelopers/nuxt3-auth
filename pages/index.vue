@@ -1,4 +1,14 @@
 <template>
-  <div>Home Page</div>
+  <div @click="toastMessage('Isso aqui deu certo', Status.SUCCESS, 4000);">Home Page</div>
 </template>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  import { Status } from '~/interfaces/toastStatus.enum';
+  
+
+  onMounted( () => {
+    
+    toastMessage('Ae porra', Status.SUCCESS, 4000);
+    
+  })
+
+</script>
