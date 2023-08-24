@@ -13,8 +13,12 @@
         name="uname"
         required
       />
+ 
 
       <label for="psw"><b>Password</b></label>
+
+      <inputPassword v-model="user.password" />
+
       <input
         v-model="user.password"
         type="password"
@@ -45,12 +49,10 @@ const router = useRouter();
 
 const login = async () => {
   await authenticateUser(user.value);
-  // redirect to homepage if user is authenticated
   if (authenticated) {
     router.push('/');
     return;
   }
-  toastMessage('Ops vtnc', Status.ERROR, 4000);
 };
 </script>
 <style lang="scss">
