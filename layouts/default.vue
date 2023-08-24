@@ -4,6 +4,7 @@
       <ul>
         <li><nuxt-link to="/">Home</nuxt-link></li>
         <li><nuxt-link to="/about">About</nuxt-link></li>
+        <li><nuxt-link to="/teste">Test</nuxt-link></li>
         <li v-if="!authenticated" class="loginBtn" style="float: right">
           <nuxt-link to="/login">Login</nuxt-link>
         </li>

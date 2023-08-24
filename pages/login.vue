@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ user }}
     <div class="border-3 border-solid border-gray-200">
       <Em1InputText
         v-model="user.username"
@@ -33,8 +34,8 @@ const { authenticateUser } = useAuthStore(); // use auth store
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
 
 const user = ref({
-  username: "",
-  password: "",
+  username: "teste",
+  password: "123123",
 });
 const router = useRouter();
 
