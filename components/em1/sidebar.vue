@@ -86,7 +86,7 @@ export default {
       return `${base} w-16`;
     },
     menuClass() {
-      const base = `h-full overflow-y-auto bg-black ${this.class}`;
+      const base = `h-full overflow-y-auto bg-gray-700 ${this.class}`;
       if (this.mini) {
         return `${base} px-3`;
       }

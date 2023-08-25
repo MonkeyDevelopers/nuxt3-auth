@@ -3,13 +3,13 @@
 
   <div class="flex">
     <div class="hidden md:block">
-      <Em1Sidebar :items="items">
+      <Em1Sidebar class="bg-sky-800" :items="items">
         <Em1Avatar imageUrl="https://github.com/caio-emidio.png" />
       </Em1Sidebar>
     </div>
 
     <div class="w-full">
-      <Em1Navbar class="bg-black" menuClass="bg-black" :items="items">
+      <Em1Navbar class="bg-gray-700" menuClass="bg-gray-700" :items="items">
         My System
       </Em1Navbar>
       <div class="px-2 py-2"><slot></slot></div>
