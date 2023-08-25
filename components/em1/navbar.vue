@@ -15,17 +15,17 @@
         v-for="item in items"
         :key="item.id"
       >
-        <a :href="item.link" class="text-white hover:text-gray-300">
+        <NuxtLink :to="item.link" class="text-white hover:text-gray-300">
           {{ item.label }}
-        </a>
+        </NuxtLink>
       </div>
     </div>
     <div v-if="showMobileMenu" class="md:hidden">
       <div :class="navMenuClass">
         <div v-for="item in items" :key="item.id">
-          <a :href="item.link" class="text-white hover:text-blue-300">{{
+          <NuxtLink :to="item.link" class="text-white hover:text-blue-300">{{
             item.label
-          }}</a>
+          }}</NuxtLink>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@ export default {
       return `bg-gray-700 p-4 flex justify-between items-center ${this.class}`;
     },
     navMenuClass() {
-      return `bg-gray-700 absolute top-12 left-0 w-40 p-4  ${this.menuClass}`;
+      return `bg-gray-700 absolute top-12 left-0 w-60 p-4 h-[90vh] ${this.menuClass}`;
     },
   },
   methods: {
