@@ -4,7 +4,8 @@
   </label>
   <input
     class="w-full py-3 px-5 my-2 mx-0.5 inline-block box-border border border-solid border-gray-300 focus:border-blue-500 focus:outline-none focus:text-primary"
-    v-model="modelValue"
+    :value="modelValue"
+    @input="onInput"
     type="text"
     :placeholder="placeholder"
   />
@@ -22,8 +23,14 @@
 const props = defineProps<{
   label?: string;
   placeholder?: string;
+  modelValue?: any;
 }>();
 
 const { placeholder, label } = props;
-const modelValue = defineModel();
+
+const emit = defineEmits(["update:modelValue"]);
+
+function onInput(e: any) {
+  emit("update:modelValue", e.target.value);
+}
 </script>

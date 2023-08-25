@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     base() {
-      return `py-2 px-4 bg-gray-600 font-semibold text-white  transition duration-200 ${this.class}`;
+      return `py-2 px-4 bg-gray-600 font-semibold text-white  transition duration-200 select-none ${this.class}`;
     },
   },
 };

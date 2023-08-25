@@ -3,6 +3,8 @@ import { Status } from "~/interfaces/toastStatus.enum";
 import { toastMessage } from "~/composables";
 import { UserPayloadInterface } from "~/interfaces";
 
+import { useLoadingStore } from "./loading";
+
 export const useAuthStore = defineStore("auth", {
   state: () => ({
     authenticated: false,
@@ -23,20 +25,22 @@ export const useAuthStore = defineStore("auth", {
           },
         }
       );
+      const { setLoading } = useLoadingStore();
+      setLoading(pending);
       this.loading = pending;
 
       if (data.value) {
-        const token = useCookie("token"); // useCookie new hook in nuxt 3
-        token.value = data?.value?.access_token; // set token to cookie
-        this.authenticated = true; // set authenticated  state value to true
+        const token = useCookie("token");
+        token.value = data?.value?.access_token;
+        this.authenticated = true;
       } else {
-        toastMessage("Ops vtnc", Status.ERROR, 4000);
+        toastMessage("Erro ao Logar", Status.ERROR, 4000);
       }
     },
     logUserOut() {
-      const token = useCookie("token"); // useCookie new hook in nuxt 3
-      this.authenticated = false; // set authenticated  state value to false
-      token.value = null; // clear the token cookie
+      const token = useCookie("token");
+      this.authenticated = false;
+      token.value = null;
     },
   },
 });

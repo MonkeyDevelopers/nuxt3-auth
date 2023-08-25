@@ -3,12 +3,6 @@
     <b>{{ label }}</b>
   </label>
   <div class="flex items-center gap-2">
-    <div class="cursor-pointer" v-show="show" @click="show = !show">
-      <Icon name="heroicons-solid:eye" class="h-6 w-6 text-primary hover:text-primaryDark" />
-    </div>
-    <div class="cursor-pointer" v-show="!show" @click="show = !show">
-      <Icon name="heroicons-solid:eye-slash" class="h-6 w-6 text-primary hover:text-primaryDark" />
-    </div>
     <input
       :value="modelValue"
       @input="onInput"
@@ -18,6 +12,20 @@
       name="uname"
       required
     />
+    <div>
+      <div class="cursor-pointer" v-show="show" @click="show = !show">
+        <Icon
+          name="heroicons-solid:eye"
+          class="h-6 w-6 text-primary hover:text-primaryDark"
+        />
+      </div>
+      <div class="cursor-pointer" v-show="!show" @click="show = !show">
+        <Icon
+          name="heroicons-solid:eye-slash"
+          class="h-6 w-6 text-primary hover:text-primaryDark"
+        />
+      </div>
+    </div>
   </div>
 </template>
 

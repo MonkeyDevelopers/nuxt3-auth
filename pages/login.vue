@@ -1,6 +1,14 @@
 <template>
-  <div>
-    <div class="border-3 border-solid border-gray-200">
+  <div class="flex flex-col justify-center items-center mt-24 px-4">
+    <!-- <base-logo class="h-16" /> -->
+
+    <p class="text-2xl font-bold mt-10">Bem-vindo de volta</p>
+
+    <p class="text-xl font-normal text--primary opacity-60 mt-2">
+      Acesse sua conta
+    </p>
+
+    <div class="flex flex-col gap-2 w-full md:max-w-[60vh] mt-10">
       <Em1InputText
         v-model="user.username"
         label="Username"
@@ -10,31 +18,11 @@
         v-model="user.password"
         label="Password"
         placeholder="Enter Password"
+        side="right"
       />
-
-      <Em1Avatar
-        name="Caio"
-        imageUrl="https://github.com/caio-emidio.png"
-        class="bg-primary text-white"
-      />
-
-      <div class="flex gap-2">
-        <Em1Tag>Default</Em1Tag>
-        <Em1Tag color="primary">Primary</Em1Tag>
-        <Em1Tag color="success">Success</Em1Tag>
-        <Em1Tag color="info">Info</Em1Tag>
-        <Em1Tag color="warning">Warning</Em1Tag>
-        <Em1Tag color="error">Error</Em1Tag>
-      </div>
-
-
-      <div class="mt-4">
-        <Em1Button
-          class="bg-primary hover:bg-primaryDark"
-          @click.prevent="login()"
-          >Login</Em1Button
-        >
-      </div>
+      <Em1Button class="bg-primary hover:bg-primaryDark w-full h-12 text-lg" @click="login()">
+        Login
+      </Em1Button>
     </div>
   </div>
 </template>
@@ -43,21 +31,15 @@
 import { storeToRefs } from "pinia";
 import { useAuthStore } from "~/store/auth";
 
-const { authenticateUser } = useAuthStore(); // use auth store
+const { authenticateUser } = useAuthStore(); 
 
-const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
+const { authenticated } = storeToRefs(useAuthStore()); 
 
 const user = ref({
   username: "",
   password: "",
 });
 const router = useRouter();
-
-const navbarItems = ref([
-  { id: 1, label: "Home", link: "/" },
-  { id: 2, label: "About", link: "/about" },
-  { id: 3, label: "Contact", link: "/contact" },
-]);
 
 const login = async () => {
   await authenticateUser(user.value);

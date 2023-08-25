@@ -23,7 +23,7 @@ module.exports = {
         black: "#121212",
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Satoshi-medium", "sans-serif"],
       },
     },
   },
