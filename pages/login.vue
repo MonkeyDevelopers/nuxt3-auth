@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ user }}
     <div class="border-3 border-solid border-gray-200">
       <Em1InputText
         v-model="user.username"
@@ -13,13 +12,28 @@
         placeholder="Enter Password"
       />
 
+      <Em1Avatar
+        name="Caio"
+        imageUrl="https://github.com/caio-emidio.png"
+        class="bg-primary text-white"
+      />
+
+      <div class="flex gap-2">
+        <Em1Tag>Default</Em1Tag>
+        <Em1Tag color="primary">Primary</Em1Tag>
+        <Em1Tag color="success">Success</Em1Tag>
+        <Em1Tag color="info">Info</Em1Tag>
+        <Em1Tag color="warning">Warning</Em1Tag>
+        <Em1Tag color="error">Error</Em1Tag>
+      </div>
+
+
       <div class="mt-4">
-        <button
+        <Em1Button
+          class="bg-primary hover:bg-primaryDark"
           @click.prevent="login()"
-          class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >Login</Em1Button
         >
-          Login
-        </button>
       </div>
     </div>
   </div>
@@ -34,10 +48,16 @@ const { authenticateUser } = useAuthStore(); // use auth store
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
 
 const user = ref({
-  username: "teste",
-  password: "123123",
+  username: "",
+  password: "",
 });
 const router = useRouter();
+
+const navbarItems = ref([
+  { id: 1, label: "Home", link: "/" },
+  { id: 2, label: "About", link: "/about" },
+  { id: 3, label: "Contact", link: "/contact" },
+]);
 
 const login = async () => {
   await authenticateUser(user.value);
