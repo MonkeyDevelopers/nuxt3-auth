@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col justify-center items-center mt-24 px-4">
-    <!-- <base-logo class="h-16" /> -->
+    <base-logo class="h-16" />
 
     <p class="text-2xl font-bold mt-10">Bem-vindo de volta</p>
 

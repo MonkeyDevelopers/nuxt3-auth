@@ -1,7 +1,7 @@
 <template>
   <Em1LoadingScreen />
 
-  <div class="flex">
+  <div class="flex bg-white">
     <div class="hidden md:block">
       <Em1Sidebar class="bg-sky-800" :items="items">
         <Em1Avatar imageUrl="https://github.com/caio-emidio.png" />

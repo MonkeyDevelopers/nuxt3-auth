@@ -25,7 +25,12 @@
 
       <div class="flex gap-2">
         <Em1CardH :data="data" />
-        <Em1CardH :data="data2" /> 
+        <Em1CardH :data="data2" />
+      </div>
+
+      <div>
+        <h1 class="text-2xl font-bold mb-4">Generic Autocomplete Example</h1>
+        <Em1Autocomplete v-model="country" :options="countries" />
       </div>
     </div>
   </div>
@@ -36,6 +41,16 @@ definePageMeta({
   middleware: ["auth"],
   layout: "admin",
 });
+
+const country = ref("");
+
+const countries = ref([
+  "United States",
+  "Canada",
+  "United Kingdom",
+  "Australia",
+  "Germany",
+]);
 
 const data = ref({
   title: "Views",
