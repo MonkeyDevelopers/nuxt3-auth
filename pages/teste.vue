@@ -29,8 +29,7 @@
       </div>
 
       <div>
-        <h1 class="text-2xl font-bold mb-4">Generic Autocomplete Example</h1>
-        <Em1Autocomplete v-model="country" :options="countries" />
+        <Em1Autocomplete v-model="country" :options="countries" label="Generic Autocomplete Example"/>
       </div>
     </div>
   </div>

@@ -1,31 +1,22 @@
 <template>
-  <label class="select-none" v-if="label">
+  <label class="select-none dark:text-white" v-if="label">
     <b>{{ label }}</b>
   </label>
-  <div class="flex items-center gap-2">
+  <div class="relative">
+    <Icon
+      @mousedown.prevent
+      @click="show = !show"
+      :name="show ? 'heroicons-solid:eye' : 'heroicons-solid:eye-slash'"
+      :color="show ? '#f97316' : '#1242bd'"
+      class="absolute left-3 top-5 text-gray-400 h-6 w-6 cursor-pointer"
+    />
     <input
       :value="modelValue"
       @input="onInput"
       :type="show ? 'text' : 'password'"
-      class="w-full py-3 px-5 my-2 mx-0.5 inline-block box-border border border-solid border-gray-300 focus:border-primary focus:outline-none focus:text-primary"
+      class="w-full dark:bg-black dark:text-white py-3 px-4 pl-10 my-2 mx-0.5 inline-block box-border border border-solid border-gray-300 focus:border-primary focus:outline-none focus:text-primary dark:focus:text-white"
       :placeholder="placeholder"
-      name="uname"
-      required
     />
-    <div>
-      <div class="cursor-pointer" v-show="show" @click="show = !show">
-        <Icon
-          name="heroicons-solid:eye"
-          class="h-6 w-6 text-primary hover:text-primaryDark"
-        />
-      </div>
-      <div class="cursor-pointer" v-show="!show" @click="show = !show">
-        <Icon
-          name="heroicons-solid:eye-slash"
-          class="h-6 w-6 text-primary hover:text-primaryDark"
-        />
-      </div>
-    </div>
   </div>
 </template>
 

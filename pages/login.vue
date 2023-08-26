@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col justify-center items-center mt-24 px-4">
-    <base-logo class="h-16" />
+  <div class="flex flex-col justify-center items-center px-4">
+    <base-logo class="h-16 mt-24" />
 
     <p class="text-2xl font-bold mt-10">Bem-vindo de volta</p>
 
@@ -20,7 +20,10 @@
         placeholder="Enter Password"
         side="right"
       />
-      <Em1Button class="bg-primary hover:bg-primaryDark w-full h-12 text-lg" @click="login()">
+      <Em1Button
+        class="bg-primary hover:bg-primaryDark w-full h-12 text-lg"
+        @click="login()"
+      >
         Login
       </Em1Button>
     </div>
@@ -31,9 +34,9 @@
 import { storeToRefs } from "pinia";
 import { useAuthStore } from "~/store/auth";
 
-const { authenticateUser } = useAuthStore(); 
+const { authenticateUser } = useAuthStore();
 
-const { authenticated } = storeToRefs(useAuthStore()); 
+const { authenticated } = storeToRefs(useAuthStore());
 
 const user = ref({
   username: "",

@@ -1,9 +1,9 @@
 <template>
-  <label class="select-none" v-if="label">
+  <label class="select-none dark:text-white" v-if="label">
     <b>{{ label }}</b>
   </label>
   <input
-    class="w-full py-3 px-5 my-2 mx-0.5 inline-block box-border border border-solid border-gray-300 focus:border-blue-500 focus:outline-none focus:text-primary"
+    class="w-full bg-white dark:bg-black dark:text-white py-3 px-5 my-2 mx-0.5 inline-block box-border border border-solid border-gray-300 focus:border-blue-500 focus:outline-none dark:focus:text-white"
     :value="modelValue"
     @input="onInput"
     type="text"

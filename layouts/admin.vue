@@ -1,15 +1,15 @@
 <template>
   <Em1LoadingScreen />
 
-  <div class="flex bg-white">
+  <div class="flex dark:bg-[#2b2d31]">
     <div class="hidden md:block">
-      <Em1Sidebar class="bg-sky-800" :items="items">
-        <Em1Avatar imageUrl="https://github.com/caio-emidio.png" />
+      <Em1Sidebar class="bg-gray-400 dark:bg-black" :items="items">
+        <baseLogo class="w-14 h-14"/>
       </Em1Sidebar>
     </div>
 
     <div class="w-full">
-      <Em1Navbar class="bg-gray-700" menuClass="bg-gray-700" :items="items">
+      <Em1Navbar class="bg-gray-400 dark:bg-black" menuClass="bg-gray-400 dark:bg-black" :items="items">
         My System
       </Em1Navbar>
       <div class="px-2 py-2"><slot></slot></div>

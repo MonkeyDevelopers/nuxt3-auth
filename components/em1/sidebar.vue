@@ -1,7 +1,7 @@
 <template>
   <div :class="baseClass">
     <div :class="menuClass">
-      <li :class="mini ? 'flex pt-2 mb-10' : 'flex items-center p-2 mb-10'">
+      <li :class="mini ? 'flex pt-2 mb-10' : 'flex justify-center items-center p-2 mb-10'">
         <icon
           name="heroicons:bars-4-20-solid"
           class="h-6 w-6 text-white"
@@ -11,7 +11,7 @@
       <div class="flex justify-center p-2">
         <slot></slot>
       </div>
-      <ul class="font-medium border-t text-white border-gray-700">
+      <ul class="font-medium border-t text-black dark:text-white border-gray-700">
         <div class="flex flex-col gap-2 mt-2">
           <li :class="optionsClass" v-for="(item, index) in items" :key="index">
             <NuxtLink :to="item.link" :class="optionsClass">
@@ -72,7 +72,7 @@ export default {
   },
   computed: {
     optionsClass() {
-      const base = "flex gap-2 font-semibold hover:text-primary";
+      const base = "flex gap-2 hover:bg-gray-600 px-2 py-2";
       if (!this.mini) {
         return `${base} justify-center items-center`;
       }
