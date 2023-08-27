@@ -29,8 +29,15 @@
       </div>
 
       <div>
-        <Em1Autocomplete v-model="country" :options="countries" label="Generic Autocomplete Example"/>
+        <Em1Autocomplete
+          v-model="country"
+          :options="countries"
+          label="Generic Autocomplete Example"
+        />
       </div>
+    </div>
+    <div class="mt-8">
+      <Em1Table :headers="headers" :items="items" />
     </div>
   </div>
 </template>
@@ -40,6 +47,8 @@ definePageMeta({
   middleware: ["auth"],
   layout: "admin",
 });
+
+useNavInfoStore().setInfo("Examples");
 
 const country = ref("");
 
@@ -62,4 +71,43 @@ const data2 = ref({
   value: Math.floor(Math.random() * 201) - 100,
   diff: Math.floor(Math.random() * 201) - 100,
 });
+
+const headers = ref([
+  { key: "id", label: "ID" },
+  { key: "name", label: "Name" },
+  {
+    label: "Custom Price",
+    component: "span",
+    editable: false,
+    key: "price",
+  },
+  {
+    label: "Modified Price",
+    component: "span",
+    editable: false,
+    key: null,
+    customRender: (item: { price: number }) => item.price * 100,
+  },
+  {
+    label: "Actions",
+    component: "div",
+    editable: false,
+    actions: [
+      {
+        label: "Edit",
+        handler: (item: any) => console.log(item),
+      },
+      {
+        label: "Delete",
+        handler: (item: any) => console.log(item),
+      },
+    ],
+  },
+]);
+
+const items = ref([
+  { id: 1, name: "John", price: 20 },
+  { id: 2, name: "Jane", price: 30 },
+  // Add more items as needed
+]);
 </script>

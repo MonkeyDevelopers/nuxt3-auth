@@ -16,11 +16,12 @@
     <input
       v-model="searchTerm"
       @input="handleInput"
-      class="w-full dark:bg-black dark:text-white px-10 py-3 border rounded focus:outline-none focus:border-primary focus:text-primary dark:focus:text-white"
+      :class="SearchClass"
       placeholder="Type to search..."
-      @click="clickShowOptionn"
+      @click="clickShowOption"
     />
     <icon
+      v-if="hasSearchIcon"
       name="heroicons:magnifying-glass-solid"
       class="absolute left-3 top-3 text-gray-400 pointer-events-none h-6 w-6"
     />
@@ -45,6 +46,14 @@ export default {
   props: {
     options: Array,
     label: String,
+    hasSearchIcon: {
+      type: Boolean,
+      default: false,
+    },
+    size: {
+      type: String,
+      default: "md",
+    },
   },
   data() {
     return {
@@ -58,9 +67,16 @@ export default {
         option.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     },
+    SearchClass() {
+      const base = "w-full dark:bg-black dark:text-white px-3 py-3 border rounded focus:outline-none focus:border-primary focus:text-primary dark:focus:text-white";
+      if(this.hasSearchIcon) {
+        return base + " pl-10";
+      }
+      return base;
+    }
   },
   methods: {
-    clickShowOptionn() {
+    clickShowOption() {
       this.showOptions = true;
       this.filteredOptions = this.options;
     },

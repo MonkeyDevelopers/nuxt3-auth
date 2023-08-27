@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   modules: ["@pinia/nuxt", "@nuxtjs/tailwindcss", 'nuxt-icon'],
 
   imports: {
-    dirs: ["./stores"],
+    dirs: ["./store"],
   },
 
   pinia: {

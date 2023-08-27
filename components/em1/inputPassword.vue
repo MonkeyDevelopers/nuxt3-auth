@@ -7,7 +7,7 @@
       @mousedown.prevent
       @click="show = !show"
       :name="show ? 'heroicons-solid:eye' : 'heroicons-solid:eye-slash'"
-      :color="show ? '#f97316' : '#1242bd'"
+      :color="show ? '#1242bd' : '#515151'"
       class="absolute left-3 top-5 text-gray-400 h-6 w-6 cursor-pointer"
     />
     <input

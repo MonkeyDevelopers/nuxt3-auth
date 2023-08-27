@@ -10,7 +10,7 @@
 
     <div class="w-full">
       <Em1Navbar class="bg-gray-400 dark:bg-black" menuClass="bg-gray-400 dark:bg-black" :items="items">
-        My System
+        {{ info }}
       </Em1Navbar>
       <div class="px-2 py-2"><slot></slot></div>
     </div>
@@ -18,6 +18,9 @@
 </template>
 
 <script setup>
+import { useNavInfoStore } from '~/store/navInfo';
+
+const { info } = storeToRefs(useNavInfoStore());
 const items = ref([
   {
     label: "Home",
