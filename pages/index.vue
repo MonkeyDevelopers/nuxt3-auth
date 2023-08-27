@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="w-1/3">
-      <Em1Board> Oi </Em1Board>
+      <DashboardTransactionHistory />
     </div>
   </div>
 </template>

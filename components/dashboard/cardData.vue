@@ -1,5 +1,5 @@
 <template>
-  <Em1CardH class="min-w-[340px]" :data="data">
+  <Em1CardH :data="data">
     <span class="font-bold text-3xl"> {{ data.value }} </span>
     <Em1Tag class="ml-2" :color="data.diff > 0 ? 'success' : 'error'">
       {{ data.diff }}

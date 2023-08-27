@@ -39,6 +39,21 @@
     <div class="mt-8">
       <Em1Table :headers="headers" :items="items" />
     </div>
+
+    <div>
+      <Em1Dropdown>
+        <Em1DropdownItem
+          v-for="(item, index) in dropdownItems"
+          :key="index"
+          :select-item="() => (item: any) => console.log(item)"
+        >
+          <div class="flex items-center">
+            <Em1Avatar :imageUrl="item.url" />
+            {{ item }}
+          </div>
+        </Em1DropdownItem>
+      </Em1Dropdown>
+    </div>
   </div>
 </template>
 
@@ -58,6 +73,20 @@ const countries = ref([
   "United Kingdom",
   "Australia",
   "Germany",
+]);
+
+const dropdownItems = ref([
+  {
+    url: "https://github.com/caio-emidio.png",
+    name: "John Doe",
+    customInfo: "Developer",
+  },
+  {
+    url: "https://github.com/em1dio.png",
+    name: "Jane Smith",
+    customInfo: "Designer",
+  },
+  // Add more items as needed
 ]);
 
 const data = ref({

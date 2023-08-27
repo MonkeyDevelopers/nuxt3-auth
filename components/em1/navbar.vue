@@ -1,12 +1,12 @@
 <template>
   <nav :class="navListClass">
     <button
-      class="text-white hover:text-blue-300 md:hidden"
+      class="dark:text-white hover:text-blue-300 md:hidden"
       @click="toggleMobileMenu"
     >
       ☰
     </button>
-    <div class="text-white font-semibold text-lg hidden md:block">
+    <div class="dark:text-white font-semibold text-lg hidden md:block">
       <slot></slot>
     </div>
     <div v-if="itemInLine" class="flex gap-6 px-10">
@@ -15,7 +15,7 @@
         v-for="item in items"
         :key="item.id"
       >
-        <NuxtLink :to="item.link" class="text-white hover:text-gray-300">
+        <NuxtLink :to="item.link" class="dark:text-white hover:text-gray-300">
           {{ item.label }}
         </NuxtLink>
       </div>
@@ -48,10 +48,10 @@ export default {
   },
   computed: {
     navListClass() {
-      return `bg-gray-700 p-4 flex justify-between items-center ${this.class}`;
+      return `p-4 flex justify-between items-center ${this.class}`;
     },
     navMenuClass() {
-      return `bg-gray-700 absolute top-12 left-0 w-60 p-4 h-[90vh] ${this.menuClass}`;
+      return `absolute top-12 left-0 w-60 p-4 h-[90vh] ${this.menuClass}`;
     },
   },
   methods: {
