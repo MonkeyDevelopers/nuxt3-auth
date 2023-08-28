@@ -28,27 +28,32 @@
         @click="selectItem(item)"
       >
         <icon :name="item?.icon" v-if="item.icon" class="mr-2" />
-        {{ item.text }}
+        {{ item.value }}
       </li>
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-const { label, options, placeholder, selectFirst, isMenu, em1Class, itemClass } =
-  defineProps<{
-    label?: string;
-    options: Array<any>;
-    placeholder?: string;
-    selectFirst?: { type: boolean; default: false };
-    isMenu?: boolean;
-    em1Class?: string;
-    itemClass?: string;
-  }>();
+const {
+  label,
+  options,
+  placeholder,
+  isMenu,
+  em1Class,
+  itemClass,
+  notChangeValue,
+} = defineProps<{
+  label?: string;
+  options: Array<any>;
+  placeholder?: string;
+  isMenu?: boolean;
+  em1Class?: string;
+  itemClass?: string;
+  notChangeValue?: boolean;
+}>();
 
 const base = ` dark:bg-white border rounded ${em1Class}`;
-
-const emit = defineEmits(["update:modelValue"]);
 
 const isOpen = ref(false);
 const selectedValue = ref(null);
@@ -57,22 +62,22 @@ const toggleDropdown = () => {
   isOpen.value = !isOpen.value;
 };
 
+const emit = defineEmits(["updateValue"]);
+
+function onInput(e: any) {
+  emit("updateValue", e.value);
+}
+
 const selectItem = (item: any) => {
-  if (!isMenu) {
-    selectedValue.value = item.text;
+  if (!notChangeValue) {
+    selectedValue.value = item.value;
   }
   if (item.action) {
     item.action();
   }
   isOpen.value = false;
-  emit("update:modelValue", item);
+  onInput(item);
 };
-
-onMounted(() => {
-  if (selectFirst) {
-    selectedValue.value = options[0].text;
-  }
-});
 
 const clickOutside = (event: any) => {
   if (!isOpen.value || event.target.closest(".dropdown-menu")) {

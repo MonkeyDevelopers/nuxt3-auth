@@ -1,7 +1,13 @@
 <template>
   <div :class="baseClass">
     <div :class="menuClass">
-      <li :class="mini ? 'flex pt-2 mb-10' : 'flex justify-center items-center p-2 mb-10'">
+      <li
+        :class="
+          mini
+            ? 'flex pt-2 mb-10'
+            : 'flex justify-center items-center p-2 mb-10'
+        "
+      >
         <icon
           name="heroicons:bars-4-20-solid"
           class="h-6 w-6 dark:text-white"
@@ -11,7 +17,9 @@
       <div class="flex justify-center p-2">
         <slot></slot>
       </div>
-      <ul class="font-medium border-t mx-2 text-black dark:text-white border-gray-700">
+      <ul
+        class="font-medium border-t mx-2 text-black dark:text-white border-gray-700"
+      >
         <div class="flex flex-col gap-2 mt-2">
           <li :class="optionsClass" v-for="(item, index) in items" :key="index">
             <NuxtLink :to="item.link" :class="optionsClass">
@@ -33,14 +41,14 @@
         </li>
       </ul>
       <ul
-        class="pt-4 mx-2 mt-4 space-y-2 font-medium border-t border-gray-700  cursor-pointer"
+        class="pt-4 mx-2 mt-4 space-y-2 font-medium border-t border-gray-700 cursor-pointer"
       >
         <li :class="optionsClass" @click="logout()">
           <Icon
             name="heroicons:arrow-left-on-rectangle-solid"
             class="h-6 w-6 dark:text-white"
           />
-          <span v-if="this.mini">Logout</span>
+          <span class="dark:text-white" v-if="this.mini">Logout</span>
         </li>
       </ul>
     </div>
@@ -59,11 +67,10 @@ export default {
     em1Class: String,
     class: String,
   },
-
-  data() {
-    return {
-      mini: false,
-    };
+  setup() {
+    const { info } = storeToRefs(useNavInfoStore());
+    
+    return info;
   },
   methods: {
     logout() {
@@ -73,7 +80,8 @@ export default {
   },
   computed: {
     optionsClass() {
-      const base = "flex gap-2 hover:bg-blue-300 dark:hover:bg-gray-600 px-2 py-2";
+      const base =
+        "flex gap-2 hover:bg-blue-300 dark:hover:bg-gray-600 px-2 py-2";
       if (!this.mini) {
         return `${base} justify-center items-center`;
       }

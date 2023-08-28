@@ -1,18 +1,23 @@
 <template>
-  <Em1Dropdown :options="items" isMenu itemClass="right-4 md:right-0">
-    <Em1Avatar icon="circle-flags:br" class="h-8 w-8"/>
+  <Em1Dropdown :options="items" isMenu itemClass="md:right-0" @updateValue="changeValue">
+    <Em1Avatar :icon="item.icon" class="h-8 w-8" />
   </Em1Dropdown>
 </template>
 
 <script setup lang="ts">
-const item = ref({
-  name: "Padoca",
-  url: "https://flipdish.imgix.net/ggL8GLlRSfIYkQVfVhnOI5U.png?w=250&fm=png32?w=120",
-});
+
 
 const items = ref([
-  { text: "2 Lads" },
-  { text: "Loopee" },
-  { text: "Studio Jocasta Fraga" },
+  { value: "Portuguese", icon: "circle-flags:br" },
+  { value: "English", icon: "circle-flags:us" },
 ]);
+
+const item = ref(items.value[0]);
+
+function changeValue(value: any) {
+  console.log(value)
+  item.value = items.value.find(
+    (x: { value: string; icon?: string }) => x.value === value
+  );
+}
 </script>

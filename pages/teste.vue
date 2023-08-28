@@ -19,7 +19,7 @@
         class="bg-primary text-white"
       />
 
-      <div class="flex gap-2">
+      <div class="flex gap-2 flex-wrap">
         <Em1Tag>Default</Em1Tag>
         <Em1Tag color="primary">Primary</Em1Tag>
         <Em1Tag color="success">Success</Em1Tag>
