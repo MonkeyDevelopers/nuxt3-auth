@@ -6,8 +6,12 @@
     >
       ☰
     </button>
-    <div class="dark:text-white font-semibold text-lg hidden md:block">
-      <slot></slot>
+    <div
+      class="flex items-center justify-between w-full dark:text-white font-semibold text-lg"
+    >
+      <div>
+        <slot></slot>
+      </div>
     </div>
     <div v-if="itemInLine" class="flex gap-6 px-10">
       <div

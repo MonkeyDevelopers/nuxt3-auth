@@ -1,16 +1,16 @@
 <template>
-  <div class="flex gap-4">
-    <div class="w-2/3">
+  <div class="flex flex-col md:flex-row gap-4">
+    <div class="md:w-2/3">
       <div class="flex flex-col gap-4">
         <div class="flex flex-wrap-reverse md:flex-wrap gap-4">
-          <DashboardCardData :data="income" />
-          <DashboardCardData :data="outcome" />
+          <DashboardCardData class="w-full md:w-52" :data="income" />
+          <DashboardCardData class="w-full md:w-52" :data="outcome" />
           <DashboardCardPeriod />
         </div>
         <DashboardQuickActions />
       </div>
     </div>
-    <div class="w-1/3">
+    <div class="md:w-1/3">
       <DashboardTransactionHistory />
     </div>
   </div>

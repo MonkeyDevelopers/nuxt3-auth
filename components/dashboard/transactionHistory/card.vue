@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="flex flex-col justify-end">
-      <p class="text-sm dark:text-gray-400 text-end">
+      <p class="text-sm dark:text-gray-400 text-end whitespace-nowrap">
         {{ showPrice(document.value) }}
       </p>
       <div>
@@ -42,7 +42,7 @@ const { document } = defineProps<{
       name: string;
       imageUrl: string;
     };
-    value: string;
+    value: string | number;
     status: string;
   };
 }>();
@@ -73,8 +73,9 @@ const setColor = (status: string) => {
   }
 };
 
-const showPrice = (value: string) => {
-  value = parseFloat(value).toFixed(2);
+const showPrice = (value: string | number) => {
+  if (typeof value === "string") value = parseFloat(value);
+  value = value.toFixed(2);
   return "€ " + value;
 };
 </script>

@@ -6,7 +6,7 @@
       alt="Avatar"
       :class="base"
     />
-    <div v-if="name" :class="base">
+    <div v-else-if="name" :class="base">
       {{ initials.slice(0, 2) }}
     </div>
     <div

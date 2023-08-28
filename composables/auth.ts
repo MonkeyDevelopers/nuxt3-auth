@@ -3,6 +3,7 @@ import { useLoadingStore } from "~/store/loading";
 const store = useAuthStore();
 
 export function authLogout() {
+  useRouter().push("/login");
   store.logUserOut();
 }
 

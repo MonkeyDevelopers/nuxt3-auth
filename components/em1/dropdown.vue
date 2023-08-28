@@ -19,11 +19,11 @@
     </button>
     <ul
       v-if="isOpen"
-      :class="`absolute z-10 w-40 shadow-lg cursor-pointer  ${base}`"
+      :class="`absolute z-10 w-52 shadow-lg cursor-pointer ${base} ${itemClass}`"
     >
       <li
         v-for="(item, index) in options"
-        class="my-2 px-4 py-2 hover:bg-gray-200"
+        class="my-2 px-4 py-2 hover:bg-gray-200 dark:text-black"
         :key="index"
         @click="selectItem(item)"
       >
@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-const { label, options, placeholder, selectFirst, isMenu, em1Class } =
+const { label, options, placeholder, selectFirst, isMenu, em1Class, itemClass } =
   defineProps<{
     label?: string;
     options: Array<any>;
@@ -43,6 +43,7 @@ const { label, options, placeholder, selectFirst, isMenu, em1Class } =
     selectFirst?: { type: boolean; default: false };
     isMenu?: boolean;
     em1Class?: string;
+    itemClass?: string;
   }>();
 
 const base = ` dark:bg-white border rounded ${em1Class}`;
@@ -60,7 +61,7 @@ const selectItem = (item: any) => {
   if (!isMenu) {
     selectedValue.value = item.text;
   }
-  if(item.action) {
+  if (item.action) {
     item.action();
   }
   isOpen.value = false;
@@ -74,14 +75,12 @@ onMounted(() => {
 });
 
 const clickOutside = (event: any) => {
-  if (!isOpen.value || event.target.closest('.dropdown-menu')) {
+  if (!isOpen.value || event.target.closest(".dropdown-menu")) {
     return;
   }
 
   isOpen.value = false;
 };
 
-document.addEventListener('click.outside', clickOutside);
-
-
+document.addEventListener("click.outside", clickOutside);
 </script>
