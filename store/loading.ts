@@ -8,5 +8,11 @@ export const useLoadingStore = defineStore("loading", {
     setLoading(value: boolean = false) {
       this.loading = value;
     },
+    setLoadingByTime(value: boolean = false, time: number = 1000) {
+      this.loading = value;
+      setTimeout(() => {
+        this.loading = false;
+      }, time);
+    },
   },
 });

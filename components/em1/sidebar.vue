@@ -56,6 +56,7 @@ export default {
     items2: {
       type: Array,
     },
+    em1Class: String,
     class: String,
   },
 
@@ -79,14 +80,14 @@ export default {
       return `${base}`;
     },
     baseClass() {
-      const base = "h-screen transition-all duration-500";
+      const base = `transition-all duration-500 ${this.class}`;
       if (this.mini) {
         return `${base} w-64`;
       }
       return `${base} w-16`;
     },
     menuClass() {
-      const base = `h-full overflow-y-auto ${this.class}`;
+      const base = `h-full overflow-y-auto ${this.em1Class}`;
       if (this.mini) {
         return `${base} px-3`;
       }

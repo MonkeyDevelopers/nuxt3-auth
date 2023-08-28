@@ -1,8 +1,17 @@
 <template>
   <div>
+    <Em1Label :label="JSON.stringify(user)" />
     <div class="border-3 border-solid border-gray-200">
-      <Em1InputText label="Username" placeholder="Enter Username" />
-      <Em1InputPassword label="Password" placeholder="Enter Password" />
+      <Em1InputText
+        v-model="user.name"
+        label="Username"
+        placeholder="Enter Username"
+      />
+      <Em1InputPassword
+        v-model="user.password"
+        label="Password"
+        placeholder="Enter Password"
+      />
 
       <Em1Avatar
         name="Caio"
@@ -25,7 +34,7 @@
 
       <div class="flex gap-2">
         <Em1CardH :data="data" />
-        <Em1CardH :data="data2" />
+        <Em1CardH :data="data" />
       </div>
 
       <div>
@@ -40,18 +49,10 @@
       <Em1Table :headers="headers" :items="items" />
     </div>
 
-    <div>
-      <Em1Dropdown>
-        <Em1DropdownItem
-          v-for="(item, index) in dropdownItems"
-          :key="index"
-          :select-item="() => (item: any) => console.log(item)"
-        >
-          <div class="flex items-center">
-            <Em1Avatar :imageUrl="item.url" />
-            {{ item }}
-          </div>
-        </Em1DropdownItem>
+    <div class="flex gap-2 bg-white/50">
+      <Em1Dropdown v-model="user.selectedOption" label="Dropdown" :options="dropdownItems" placeholder="Select an option" />
+      <Em1Dropdown v-model="user.selectedOption" :options="dropdownItems" isMenu> 
+        Aqui vai um menu 10!
       </Em1Dropdown>
     </div>
   </div>
@@ -65,6 +66,12 @@ definePageMeta({
 
 useNavInfoStore().setInfo("Examples");
 
+const user = ref({
+  name: "",
+  password: "",
+  selectedOption: null,
+});
+
 const country = ref("");
 
 const countries = ref([
@@ -76,29 +83,14 @@ const countries = ref([
 ]);
 
 const dropdownItems = ref([
-  {
-    url: "https://github.com/caio-emidio.png",
-    name: "John Doe",
-    customInfo: "Developer",
-  },
-  {
-    url: "https://github.com/em1dio.png",
-    name: "Jane Smith",
-    customInfo: "Designer",
-  },
-  // Add more items as needed
+  { text: "Option 1", icon: "heroicons:heart-20-solid" },
+  { text: "Option 2", icon: "heroicons:heart-20-solid" },
+  { text: "Option 3", icon: "heroicons:heart-20-solid" },
 ]);
 
 const data = ref({
   title: "Views",
-  value: Math.floor(Math.random() * 201) - 100,
-  diff: Math.floor(Math.random() * 201) - 100,
-});
-
-const data2 = ref({
-  title: "Views",
-  value: Math.floor(Math.random() * 201) - 100,
-  diff: Math.floor(Math.random() * 201) - 100,
+  description: "Total views",
 });
 
 const headers = ref([

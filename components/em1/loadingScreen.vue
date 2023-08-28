@@ -8,8 +8,6 @@
 </template>
 
 <script setup>
-import { useLoadingStore } from "~/store/loading";
-
 const { loading } = storeToRefs(useLoadingStore());
 </script>
 

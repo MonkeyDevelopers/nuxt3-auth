@@ -1,7 +1,5 @@
 <template>
-  <label class="select-none dark:text-white" v-if="label">
-    <b>{{ label }}</b>
-  </label>
+  <Em1Label :label="label" />
   <div class="relative">
     <Icon
       @mousedown.prevent

@@ -1,7 +1,5 @@
 <template>
-  <label class="select-none dark:text-white" v-if="label">
-    <b>{{ label }}</b>
-  </label>
+  <Em1Label :label="label" />
   <div class="relative mt-2">
     <Icon
       @mousedown.prevent
@@ -68,12 +66,13 @@ export default {
       );
     },
     SearchClass() {
-      const base = "w-full dark:bg-black dark:text-white px-3 py-3 border rounded focus:outline-none focus:border-primary focus:text-primary dark:focus:text-white";
-      if(this.hasSearchIcon) {
+      const base =
+        "w-full dark:bg-black dark:text-white px-3 py-3 border rounded focus:outline-none focus:border-primary focus:text-primary dark:focus:text-white";
+      if (this.hasSearchIcon) {
         return base + " pl-10";
       }
       return base;
-    }
+    },
   },
   methods: {
     clickShowOption() {
