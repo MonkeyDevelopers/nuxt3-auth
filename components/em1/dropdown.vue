@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative" @keydown.escape="handleEscKey">
     <Em1Label :label="label" v-if="!isMenu" />
     <button
       v-if="isMenu"
@@ -80,6 +80,7 @@ const selectItem = (item: any) => {
 };
 
 const clickOutside = (event: any) => {
+  console.log(event);
   if (!isOpen.value || event.target.closest(".dropdown-menu")) {
     return;
   }
@@ -87,5 +88,14 @@ const clickOutside = (event: any) => {
   isOpen.value = false;
 };
 
-document.addEventListener("click.outside", clickOutside);
+function handleEscKey() {
+  isOpen.value = false;
+}
+
+onMounted(() => {
+  document.addEventListener("click.outside", clickOutside);
+});
+onUnmounted(() => {
+  document.removeEventListener("click.outside", clickOutside);
+});
 </script>

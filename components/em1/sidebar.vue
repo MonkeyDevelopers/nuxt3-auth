@@ -11,7 +11,7 @@
         <icon
           name="heroicons:bars-4-20-solid"
           class="h-6 w-6 dark:text-white"
-          @click="this.mini = !this.mini"
+          @click="mini = !mini"
         ></icon>
       </li>
       <div class="flex justify-center p-2">
@@ -24,7 +24,7 @@
           <li :class="optionsClass" v-for="(item, index) in items" :key="index">
             <NuxtLink :to="item.link" :class="optionsClass">
               <Icon :name="item.icon" class="h-6 w-6" />
-              <span v-if="this.mini">{{ item.label }}</span>
+              <span v-if="mini">{{ item.label }}</span>
             </NuxtLink>
           </li>
         </div>
@@ -36,7 +36,7 @@
         <li :class="optionsClass" v-for="(item, index) in items2" :key="index">
           <NuxtLink :to="item.link">
             <Icon :name="item.icon" class="h-6 w-6" />
-            <span v-if="this.mini">{{ item.label }}</span>
+            <span v-if="mini">{{ item.label }}</span>
           </NuxtLink>
         </li>
       </ul>
@@ -48,59 +48,48 @@
             name="heroicons:arrow-left-on-rectangle-solid"
             class="h-6 w-6 dark:text-white"
           />
-          <span class="dark:text-white" v-if="this.mini">Logout</span>
+          <span class="dark:text-white" v-if="mini">Logout</span>
         </li>
       </ul>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    items: {
-      type: Array,
-    },
-    items2: {
-      type: Array,
-    },
-    em1Class: String,
-    class: String,
-  },
-  setup() {
-    const { info } = storeToRefs(useNavInfoStore());
-    
-    return info;
-  },
-  methods: {
-    logout() {
-      authLogout();
-      this.$router.push("/login");
-    },
-  },
-  computed: {
-    optionsClass() {
-      const base =
-        "flex gap-2 hover:bg-blue-300 dark:hover:bg-gray-600 px-2 py-2";
-      if (!this.mini) {
-        return `${base} justify-center items-center`;
-      }
-      return `${base}`;
-    },
-    baseClass() {
-      const base = `transition-all duration-500 ${this.class}`;
-      if (this.mini) {
-        return `${base} w-64`;
-      }
-      return `${base} w-16`;
-    },
-    menuClass() {
-      const base = `h-full overflow-y-auto ${this.em1Class}`;
-      if (this.mini) {
-        return `${base} px-3`;
-      }
-      return `${base}`;
-    },
-  },
-};
+<script setup lang="ts">
+const { items, items2, em1Class, ...props } = defineProps({
+  items: Array<any>,
+  items2: Array<any>,
+  em1Class: String,
+  class: String,
+});
+
+const { mini } = storeToRefs(useNavInfoStore());
+
+const optionsClass = computed(() => {
+  const base = "flex gap-2 hover:bg-blue-300 dark:hover:bg-gray-600 px-2 py-2";
+  if (!mini.value) {
+    return `${base} justify-center items-center`;
+  }
+  return `${base}`;
+});
+
+const baseClass = computed(() => {
+  const base = `transition-all duration-500 ${props.class}`;
+  if (mini.value) {
+    return `${base} w-64`;
+  }
+  return `${base} w-16`;
+});
+
+const menuClass = computed(() => {
+  const base = `h-full overflow-y-auto ${em1Class}`;
+  if (mini.value) {
+    return `${base} px-3`;
+  }
+  return `${base}`;
+});
+
+function logout() {
+  authLogout();
+}
 </script>

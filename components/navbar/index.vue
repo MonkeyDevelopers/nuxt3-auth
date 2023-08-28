@@ -4,7 +4,7 @@
     menuClass="bg-blue-200 dark:bg-black"
     :items="items"
   >
-    <div class="flex md:justify-between justify-end items-center w-[95vw]">
+    <div :class="`flex md:justify-between justify-end items-center ${mini? 'w-[84vw]': 'w-[95vw]'}`">
       <p class="hidden md:block">
         {{ info }}
       </p>
@@ -18,5 +18,5 @@
 </template>
 
 <script setup>
-const { info } = storeToRefs(useNavInfoStore());
+const { info, mini } = storeToRefs(useNavInfoStore());
 </script>

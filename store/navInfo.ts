@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export const useNavInfoStore = defineStore("navInfo", {
   state: () => ({
     info: "",
-    isMini: true,
+    mini: true,
   }),
   actions: {
     setInfo(value: string = "") {
