@@ -60,6 +60,9 @@ const selectItem = (item: any) => {
   if (!isMenu) {
     selectedValue.value = item.text;
   }
+  if(item.action) {
+    item.action();
+  }
   isOpen.value = false;
   emit("update:modelValue", item);
 };
@@ -69,4 +72,16 @@ onMounted(() => {
     selectedValue.value = options[0].text;
   }
 });
+
+const clickOutside = (event: any) => {
+  if (!isOpen.value || event.target.closest('.dropdown-menu')) {
+    return;
+  }
+
+  isOpen.value = false;
+};
+
+document.addEventListener('click.outside', clickOutside);
+
+
 </script>

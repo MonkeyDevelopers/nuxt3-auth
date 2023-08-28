@@ -13,22 +13,21 @@
     </div>
 
     <div class="w-full overflow-hidden">
-      <Em1Navbar
+      <Navbar />
+      <!-- <Em1Navbar
         class="bg-blue-200 dark:bg-black"
         menuClass="bg-blue-200 dark:bg-black"
         :items="items"
       >
         {{ info }}
-      </Em1Navbar>
+      </Em1Navbar> -->
       <div class="px-2 py-2 overflow-auto h-[93vh]"><slot></slot></div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useNavInfoStore } from "~/store/navInfo";
 
-const { info } = storeToRefs(useNavInfoStore());
 const items = ref([
   {
     label: "Home",
