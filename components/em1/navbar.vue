@@ -24,12 +24,12 @@
         </NuxtLink>
       </div>
     </div>
-    <div v-if="showMobileMenu" class="md:hidden">
+    <div v-if="showMobileMenu" class="md:hidden z-50">
       <div :class="navMenuClass">
         <div v-for="item in items" :key="item.id">
-          <NuxtLink :to="item.link" class="text-white hover:text-blue-300">{{
-            item.label
-          }}</NuxtLink>
+          <NuxtLink :to="item.link" class="text-white hover:text-blue-300">
+            {{ item.label }}
+          </NuxtLink>
         </div>
       </div>
     </div>

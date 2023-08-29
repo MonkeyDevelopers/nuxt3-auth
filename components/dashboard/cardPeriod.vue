@@ -1,7 +1,7 @@
 <template>
   <Em1CardH :data="data">
     <div class="flex gap-2 mt-1">
-      <Em1Autocomplete v-model="period" :options="periods"/>
+      <DashboardPeriod />
       <div class="flex gap-2 mt-1 items-center">
         <button
           class="h-8 w-8 rounded-full bg-primary/70 hover:bg-primary/30 flex justify-center items-center"
@@ -23,13 +23,5 @@ const data = ref({
   title: "Period",
   description: "Choose a period",
 });
-
-const period = ref("");
-const periods = ref([
-    "Week",
-    "Month",
-    "Year"
-]);
-
 
 </script>
