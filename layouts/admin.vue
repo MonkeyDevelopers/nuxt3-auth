@@ -1,7 +1,7 @@
 <template>
   <Em1LoadingScreen />
 
-  <div class="flex bg-[#f2f2f2] dark:bg-[#2b2d31] overflow-hidden">
+  <div class="flex bg-[#f2f2f2] dark:bg-black/90 overflow-hidden">
     <div class="hidden md:block  overflow-hidden">
       <Em1Sidebar
         class="h-screen"
@@ -20,22 +20,5 @@
 </template>
 
 <script setup>
-
-const items = ref([
-  {
-    label: "Home",
-    link: "/",
-    icon: "heroicons:home-20-solid",
-  },
-  {
-    label: "About",
-    link: "/about",
-    icon: "heroicons:user-20-solid",
-  },
-  {
-    label: "Teste",
-    link: "/teste",
-    icon: "heroicons:light-bulb-solid",
-  },
-]);
+const { info, mini, items } = storeToRefs(useNavInfoStore());
 </script>

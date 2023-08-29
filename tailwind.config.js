@@ -20,7 +20,8 @@ module.exports = {
         secondary: "#f97316",
         accent: "#E53E3E",
         white: "#FFFFFF",
-        black: "#121212",
+        black: "#020817",
+        counter: '#0B111F',
       },
       fontFamily: {
         sans: ["Satoshi-medium", "sans-serif"],

@@ -18,5 +18,5 @@
 </template>
 
 <script setup>
-const { info, mini } = storeToRefs(useNavInfoStore());
+const { info, mini, items } = storeToRefs(useNavInfoStore());
 </script>
